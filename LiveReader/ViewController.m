@@ -23,16 +23,8 @@
 static double const imageWidth = 100;
 static double const imageHeight = 100;
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.imageViews = [NSMutableArray new];
-    }
-    return self;
-}
-
 -(void)initView {
+    self.imageViews = [NSMutableArray new];
     self.view.backgroundColor = [UIColor blueColor];
     
     NSURL* remoteURL = [NSURL URLWithString:@"https://dl.dropboxusercontent.com/u/17161916/TestVideos/GOPR1166.MP4"];
@@ -41,6 +33,9 @@ static double const imageHeight = 100;
     int imageViews = [self countOfImages];
     for (int i = 0; i < imageViews; i++) {
         UIImageView* imageView = [UIImageView new];
+        imageView.backgroundColor = [UIColor colorWithRed:(arc4random() % 100) / 100.0
+                                                    green:(arc4random() % 100) / 100.0
+                                                     blue:(arc4random() % 100) / 100.0 alpha:1.0];
 //        imageView.image = resultImage;
         [self addImageView:imageView];
     }
